@@ -17,7 +17,7 @@ const Despesas = () => {
     console.log(despesa);
     getUserDespesas(despesa);
     localStorage.setItem('userOut', JSON.stringify([...userDespesas, despesa]));
-    history.push('/main');
+    history.push('/controle');
   };
   return (
     <div>
@@ -82,7 +82,7 @@ const Despesas = () => {
         />
 
         <button className="btn btn-dark" type="submit">
-          Registrar despesa
+          Adicionar registro
         </button>
 
         <Link to="/main">Voltar para home</Link>

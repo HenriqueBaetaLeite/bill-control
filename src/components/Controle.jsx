@@ -3,20 +3,29 @@ import Bill from '../context';
 import { Link } from 'react-router-dom';
 
 const Controle = () => {
-  const { userDespesas, getUserEntries } = useContext(Bill);
+  const { userEntries, getUserEntries } = useContext(Bill);
   useEffect(() => {
-    getUserEntries('userData');
+    getUserEntries('userOut');
   }, []);
+
+  const isUser = Boolean(userEntries);
 
   return (
     <div>
       <h3>Estes são seus registros</h3>
-      {userDespesas.map((despesa, index) => (
-        <div style={{border: '2px solid red', width: '400px'}} key={`${index}-despesa`}>
-          <p>{despesa.tipo}</p>
-          <p>{despesa.produto}</p>
-        </div>
-      ))}
+      {!isUser ? (
+        <h2>Nada encontrado</h2>
+      ) : (
+        userEntries.map((despesa, index) => (
+          <div style={{ border: '2px solid red', width: '400px' }} key={`${index}-despesa`}>
+            <p>{despesa.tipo}</p>
+            <p>{despesa.produto}</p>
+            <p>R${despesa.valor}</p>
+            <p>{despesa.pagamento}</p>
+          </div>
+        ))
+      )}
+      <Link to="/despesas">Registrar nova despesa</Link>
       <Link to="/main">Voltar para home</Link>
     </div>
   );

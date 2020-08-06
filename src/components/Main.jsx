@@ -9,8 +9,8 @@ const Main = () => {
       <h2>Boas vindas {userData.name}</h2>
       <Link to="/controle">Minhas contas</Link>
       <Link to="/despesas">Registre uma nova despesa</Link>
-      <Link to="/">
-        <button onClick={() => localStorage.clear()}>Sair</button>
+      <Link to="/">Sair
+        {/* <button onClick={() => localStorage.clear()}>Sair</button> */}
       </Link>
     </div>
   );
