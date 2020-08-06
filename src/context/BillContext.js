@@ -15,7 +15,6 @@ const BillContext = ({ children }) => {
   };
 
   const getUserEntries = (key) => {
-    // localStorage.getItem(key) && setUserEntries(data);
     const local = JSON.parse(localStorage.getItem(key));
     setUserEntries(local);
   };

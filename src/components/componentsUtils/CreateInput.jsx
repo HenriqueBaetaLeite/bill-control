@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CreateInput = ({ type, name, id, value, onChange, label, placeholder }) => {
+const CreateInput = ({ type, name, id, value, onChange, label, placeholder, step }) => {
   return type === 'textarea' ? (
     <label htmlFor={id}>
       {label}
@@ -23,6 +23,7 @@ const CreateInput = ({ type, name, id, value, onChange, label, placeholder }) =>
         onChange={onChange}
         value={value}
         placeholder={placeholder}
+        step={step}
       />
     </label>
   );
