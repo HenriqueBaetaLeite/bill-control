@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/bill-control/static/css/main.5f361e03.chunk.css",
+    "main.js": "/bill-control/static/js/main.706e6a69.chunk.js",
+    "main.js.map": "/bill-control/static/js/main.706e6a69.chunk.js.map",
+    "runtime-main.js": "/bill-control/static/js/runtime-main.28a7c74b.js",
+    "runtime-main.js.map": "/bill-control/static/js/runtime-main.28a7c74b.js.map",
+    "static/js/2.549a5cb6.chunk.js": "/bill-control/static/js/2.549a5cb6.chunk.js",
+    "static/js/2.549a5cb6.chunk.js.map": "/bill-control/static/js/2.549a5cb6.chunk.js.map",
+    "index.html": "/bill-control/index.html",
+    "precache-manifest.706613f58c9ba7df0f313c90d5ca95b5.js": "/bill-control/precache-manifest.706613f58c9ba7df0f313c90d5ca95b5.js",
+    "service-worker.js": "/bill-control/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/bill-control/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.549a5cb6.chunk.js.LICENSE.txt": "/bill-control/static/js/2.549a5cb6.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.28a7c74b.js",
+    "static/js/2.549a5cb6.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.706e6a69.chunk.js"
+  ]
+}
