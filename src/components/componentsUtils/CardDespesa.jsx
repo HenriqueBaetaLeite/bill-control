@@ -17,6 +17,7 @@ const CardDespesa = ({ despesa }) => {
         <td>{despesa.produto}</td>
         <td>{valorConvertido}</td>
         <td>{newDateFormated}</td>
+        <td>{despesa.pagamento}</td>
       </tr>
     </tbody>
   );

@@ -25,7 +25,7 @@ const Despesas = () => {
 
       <select onChange={(e) => handleChange(e)} name="tipo" id="tipo">
         <option value="">Categoria</option>
-        <option value="alimentacao">Alimentação</option>
+        <option value="alimentação">Alimentação</option>
         <option value="transporte">Transporte</option>
         <option value="lazer">Lazer</option>
         <option value="medicas">Despesas médicas</option>
@@ -60,7 +60,7 @@ const Despesas = () => {
         type="radio"
         name="pagamento"
         id="credito"
-        value="credito"
+        value="crédito"
         onChange={(e) => handleChange(e)}
         label="Cartão de Crédito"
       />
@@ -68,15 +68,15 @@ const Despesas = () => {
         type="radio"
         name="pagamento"
         id="debito"
-        value="debito"
+        value="débito"
         onChange={(e) => handleChange(e)}
         label="Cartão de Débito"
       />
       <CreateInput
         type="radio"
         name="pagamento"
-        id="aliment"
-        value="aliment"
+        id="alimentacao"
+        value="alimentação"
         onChange={(e) => handleChange(e)}
         label="Cartão Alimentação"
       />

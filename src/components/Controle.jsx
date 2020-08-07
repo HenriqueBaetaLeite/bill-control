@@ -14,22 +14,27 @@ const Controle = () => {
 
   return (
     <div>
-      <h3>Estes são seus registros</h3>
-      <table>
-        <tr>
-          <th>Tipo</th>
-          <th>Produto/Descrição</th>
-          <th>Valor</th>
-          <th>Data</th>
-        </tr>
-        {!isUser ? (
-          <h2>Nada encontrado</h2>
-        ) : (
-          userEntries.map((despesa, index) => (
-            <CardDespesa despesa={despesa} key={`${index}-despesa`}></CardDespesa>
-          ))
-        )}
-      </table>
+      {!isUser ? (
+        <h2>Nada encontrado</h2>
+      ) : (
+        <div>
+          <h3>Estes são seus registros</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Categoria</th>
+                <th>Produto/Descrição</th>
+                <th>Valor</th>
+                <th>Data</th>
+                <th>Pagamento</th>
+              </tr>
+            </thead>
+            {userEntries.map((despesa, index) => (
+              <CardDespesa despesa={despesa} key={`${index}-despesa`} />
+            ))}
+          </table>
+        </div>
+      )}
       <Link to="/despesas">Registrar nova despesa</Link>
       <Link to="/main">Voltar para home</Link>
     </div>
