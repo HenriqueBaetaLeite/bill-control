@@ -1,15 +1,18 @@
 import React from 'react';
 
 const CardDespesa = ({ despesa }) => {
+  const regex = /-/gi;
   console.log('cardDespesa: ', despesa);
-  const dataFormated = despesa.data.slice(5).replace('-', '/');
+  const dataFormated = despesa.data.replace(regex, '/');
   return (
-    <div style={{ border: '1px solid black', width: '250px' }}>
-      <p>{despesa.tipo}</p>
-      <p>{despesa.produto}</p>
-      <p>{despesa.valor}</p>
-      <p>{dataFormated}</p>
-    </div>
+    <tbody>
+      <tr className="table-">
+        <td>{despesa.tipo}</td>
+        <td>{despesa.produto}</td>
+        <td>R${despesa.valor}</td>
+        <td>{dataFormated}</td>
+      </tr>
+    </tbody>
   );
 };
 

@@ -15,13 +15,19 @@ const Controle = () => {
   return (
     <div>
       <h3>Estes são seus registros</h3>
-      {!isUser ? (
-        <h2>Nada encontrado</h2>
-      ) : (
-        userEntries.map((despesa, index) => (
-          <CardDespesa despesa={despesa} key={`${index}-despesa`}></CardDespesa>
-        ))
-      )}
+      <table>
+        <tr>
+          <th>Tipo</th>
+          <th>teste</th>
+        </tr>
+        {!isUser ? (
+          <h2>Nada encontrado</h2>
+        ) : (
+          userEntries.map((despesa, index) => (
+            <CardDespesa despesa={despesa} key={`${index}-despesa`}></CardDespesa>
+          ))
+        )}
+      </table>
       <Link to="/despesas">Registrar nova despesa</Link>
       <Link to="/main">Voltar para home</Link>
     </div>
