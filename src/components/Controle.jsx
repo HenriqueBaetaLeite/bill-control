@@ -18,7 +18,9 @@ const Controle = () => {
       <table>
         <tr>
           <th>Tipo</th>
-          <th>teste</th>
+          <th>Produto/Descrição</th>
+          <th>Valor</th>
+          <th>Data</th>
         </tr>
         {!isUser ? (
           <h2>Nada encontrado</h2>
