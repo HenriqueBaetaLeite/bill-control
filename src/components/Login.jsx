@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Bill from '../context/';
 
-export const Login = () => {
+const Login = () => {
   const [userInput, setUserInput] = useState({ name: '', email: '' });
   const history = useHistory();
   const { handleChangeUser } = useContext(Bill);
@@ -11,7 +11,8 @@ export const Login = () => {
     setUserInput({ ...userInput, [name]: event });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     localStorage.setItem('userData', JSON.stringify(userInput));
     handleChangeUser(userInput);
     history.push('/main');
@@ -20,7 +21,7 @@ export const Login = () => {
   const isUserInput = Boolean(userInput.name) && Boolean(userInput.email);
 
   return (
-    <form onSubmit={() => handleSubmit()}>
+    <form onSubmit={(e) => handleSubmit(e)}>
       <h3 className="mb-4">Login</h3>
 
       <section className="form-group">
@@ -52,3 +53,5 @@ export const Login = () => {
     </form>
   );
 };
+
+export default Login;
