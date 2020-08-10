@@ -8,16 +8,22 @@ const CardDespesa = ({ despesa }) => {
     style: 'currency',
     currency: 'BRL',
   });
-  console.log('cardDespesa: ', despesa);
+
+  const handleDelete = (id) => {
+    localStorage.getItem('userOut').filter((entry) => entry.id !== id);
+  };
 
   return (
     <tbody>
-      <tr className="table-">
+      <tr className="table">
         <td>{despesa.tipo}</td>
         <td>{despesa.produto}</td>
         <td>{valorConvertido}</td>
         <td>{newDateFormated}</td>
         <td>{despesa.pagamento}</td>
+        <td>
+          <button className="btn btn-sm btn-dark">x</button>
+        </td>
       </tr>
     </tbody>
   );

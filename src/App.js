@@ -10,7 +10,7 @@ import Despesas from './components/Despesas';
 const App = () => (
   <div className="App">
     <Switch>
-      <Route exact path="/" component={Login} />
+      <Route exact path="/bill-control" component={Login} />
       <Route exact path="/main" component={Main} />
       <Route exact path="/controle" component={Controle} />
       <Route exact path="/despesas" component={Despesas} />

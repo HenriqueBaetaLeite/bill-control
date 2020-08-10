@@ -35,8 +35,12 @@ const Controle = () => {
           </table>
         </div>
       )}
-      <Link to="/despesas">Registrar nova despesa</Link>
-      <Link to="/main">Voltar para home</Link>
+      <Link className="btn btn-dark mr-3" to="/despesas">
+        Registrar nova despesa
+      </Link>
+      <Link className="btn btn-dark" to="/main">
+        Voltar para home
+      </Link>
     </div>
   );
 };
