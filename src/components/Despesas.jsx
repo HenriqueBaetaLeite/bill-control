@@ -7,39 +7,44 @@ const Despesas = () => {
   const history = useHistory();
   const { userDespesas, getUserDespesas } = useContext(Bill);
   const [despesa, setDespesa] = useState({});
+  const [id, setId] = useState('');
 
   const handleChange = (event) => {
-    setDespesa({ ...despesa, [event.target.name]: event.target.value });
+    setDespesa({ ...despesa, id: Date.now(), [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(despesa);
+    console.log('componente despesa', despesa);
+    setId(Date.now());
     getUserDespesas(despesa);
     localStorage.setItem('userOut', JSON.stringify([...userDespesas, despesa]));
     history.push('/controle');
   };
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={(e) => handleSubmit(e)} className="container">
       <h2>Faça o registro de suas despesas</h2>
 
       <section className="d-flex flex-column">
-        <select onChange={(e) => handleChange(e)} name="tipo" id="tipo">
-          <option value="">Categoria</option>
-          <option value="alimentação">Alimentação</option>
-          <option value="transporte">Transporte</option>
-          <option value="lazer">Lazer</option>
-          <option value="medicas">Despesas médicas</option>
-        </select>
-
-        <CreateInput
-          type="textarea"
-          name="produto"
-          id="produto"
-          onChange={(e) => handleChange(e)}
-          label="Digite o(s) produto(s)"
-          placeholder="...produto(s)"
-        />
+        <div>
+          <select onChange={(e) => handleChange(e)} name="tipo" id="tipo">
+            <option value="">Categoria</option>
+            <option value="alimentação">Alimentação</option>
+            <option value="transporte">Transporte</option>
+            <option value="lazer">Lazer</option>
+            <option value="medicas">Despesas médicas</option>
+          </select>
+        </div>
+        <div>
+          <CreateInput
+            type="textarea"
+            name="produto"
+            id="produto"
+            onChange={(e) => handleChange(e)}
+            label="Digite o(s) produto(s)"
+            placeholder="...produto(s)"
+          />
+        </div>
 
         <CreateInput
           type="number"
@@ -49,6 +54,7 @@ const Despesas = () => {
           label="Valor da despesa: R$"
           step="0.010"
         />
+
         <CreateInput
           type="radio"
           name="pagamento"
@@ -86,7 +92,7 @@ const Despesas = () => {
           name="data"
           id="data"
           onChange={(e) => handleChange(e)}
-          label="Data do registro"
+          label="Data da compra"
         />
       </section>
 

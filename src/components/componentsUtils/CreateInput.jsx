@@ -2,8 +2,10 @@ import React from 'react';
 
 const CreateInput = ({ type, name, id, value, onChange, label, placeholder, step }) => {
   return type === 'textarea' ? (
-    <label htmlFor={id}>
-      {label}
+    <div className="d-flex align-items-center mt-2 mb-2">
+      <label className="mr-2" htmlFor={id}>
+        {label}
+      </label>
       <textarea
         name={name}
         id={id}
@@ -12,10 +14,12 @@ const CreateInput = ({ type, name, id, value, onChange, label, placeholder, step
         value={value}
         placeholder={placeholder}
       />
-    </label>
+    </div>
   ) : (
-    <label htmlFor={id}>
-      {label}
+    <div className="d-flex align-items-center mt-2 mb-2">
+      <label className="mr-2" htmlFor={id}>
+        {label}
+      </label>
       <input
         name={name}
         id={id}
@@ -25,7 +29,7 @@ const CreateInput = ({ type, name, id, value, onChange, label, placeholder, step
         placeholder={placeholder}
         step={step}
       />
-    </label>
+    </div>
   );
 };
 

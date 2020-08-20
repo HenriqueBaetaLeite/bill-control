@@ -14,7 +14,7 @@ const Controle = () => {
 
   return (
     <div>
-      {!isUser ? (
+      {!isUser || userEntries.length === 0 ? (
         <h2>Nada encontrado</h2>
       ) : (
         <div>
@@ -32,6 +32,12 @@ const Controle = () => {
             {userEntries.map((despesa, index) => (
               <CardDespesa despesa={despesa} key={`${index}-despesa`} />
             ))}
+            <tfoot>
+              <tr>
+                <td>Soma</td>
+                <td></td>
+              </tr>
+            </tfoot>
           </table>
         </div>
       )}

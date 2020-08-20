@@ -21,7 +21,7 @@ const Login = () => {
   const isUserInput = Boolean(userInput.name) && Boolean(userInput.email);
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={(e) => handleSubmit(e)} className="container mt-4">
       <h3 className="mb-4">Login</h3>
 
       <section className="form-group">
