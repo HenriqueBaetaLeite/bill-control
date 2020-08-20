@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import Bill from '../../context';
 
 const CardDespesa = ({ despesa }) => {
+  const { userEntries, getUserEntries } = useContext(Bill);
   // const regex = /-/gi;
   // const dataFormated = despesa.data.replace(regex, '/');
   const newDateFormated = new Date(despesa.data).toLocaleDateString('pt-br', { timeZone: 'UTC' });
@@ -16,7 +19,7 @@ const CardDespesa = ({ despesa }) => {
     const newUserOut = userOut.filter((entry) => entry.id !== id);
     localStorage.setItem('userOut', JSON.stringify(newUserOut));
     console.log('o q tem storage', newUserOut);
-    // window.location.reload(false);
+    getUserEntries('userOut');
   };
 
   const isDateRegistered = !!despesa.data;

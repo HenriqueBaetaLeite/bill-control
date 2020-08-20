@@ -8,7 +8,9 @@ const Main = () => {
   useEffect(() => {
     getUserEntries('userOut');
   }, []);
+
   console.log('componente main, buscando userEntries do context', userEntries);
+  
   return (
     <div className="container">
       <h2>Boas vindas {userData.name}</h2>

@@ -15,12 +15,13 @@ const Despesas = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('componente despesa', despesa);
+    console.log('componente despesa submit', despesa);
     setId(Date.now());
     getUserDespesas(despesa);
     localStorage.setItem('userOut', JSON.stringify([...userDespesas, despesa]));
-    history.push('/controle');
+    history.push('/main');
   };
+  console.log('componente despesa', despesa);
   return (
     <form onSubmit={(e) => handleSubmit(e)} className="container">
       <h2>Faça o registro de suas despesas</h2>

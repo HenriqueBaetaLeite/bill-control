@@ -6,7 +6,8 @@ import CardDespesa from './componentsUtils/CardDespesa';
 const Controle = () => {
   const { userEntries, getUserEntries } = useContext(Bill);
   useEffect(() => {
-    getUserEntries('userOut');
+    // getUserEntries('userOut');
+    console.log('renderizando controle');
   }, []);
 
   // abaixo é o mesmo que Boolean(userEntries)
