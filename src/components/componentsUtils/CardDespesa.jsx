@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import Bill from '../../context';
 
 const CardDespesa = ({ despesa }) => {
-  const { userEntries, getUserEntries } = useContext(Bill);
+  const { getUserOut } = useContext(Bill);
   // const regex = /-/gi;
   // const dataFormated = despesa.data.replace(regex, '/');
   const newDateFormated = new Date(despesa.data).toLocaleDateString('pt-br', { timeZone: 'UTC' });
@@ -15,14 +15,14 @@ const CardDespesa = ({ despesa }) => {
 
   const handleDelete = (id) => {
     const userOut = JSON.parse(localStorage.getItem('userOut'));
-    console.log('o q tinha storage', userOut);
-    const newUserOut = userOut.filter((entry) => entry.id !== id);
+    const newUserOut = userOut.filter((out) => out.id !== id);
     localStorage.setItem('userOut', JSON.stringify(newUserOut));
-    console.log('o q tem storage', newUserOut);
-    getUserEntries('userOut');
+    getUserOut('userOut');
   };
 
   const isDateRegistered = !!despesa.data;
+
+  const isPagamento = !!despesa.pagamento;
 
   return (
     <tbody>
@@ -30,8 +30,8 @@ const CardDespesa = ({ despesa }) => {
         <td style={{ textTransform: 'capitalize' }}>{despesa.tipo}</td>
         <td>{despesa.produto}</td>
         <td>{valorConvertido}</td>
-        <td>{isDateRegistered ? newDateFormated : 'data não informada'}</td>
-        <td>{despesa.pagamento}</td>
+        <td>{isDateRegistered ? newDateFormated : 'sem registro'}</td>
+        <td>{isPagamento ? despesa.pagamento : 'sem registro'}</td>
         <td>
           <button onClick={() => handleDelete(despesa.id)} className="btn btn-sm btn-dark">
             x

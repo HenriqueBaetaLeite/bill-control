@@ -1,25 +1,25 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import Bill from '../context';
 import { Link } from 'react-router-dom';
-import CardDespesa from './componentsUtils/CardDespesa';
+import CardReceita from './componentsUtils/CardReceita';
 
-const Controle = () => {
-  const { userOut } = useContext(Bill);
+const ControleReceitas = () => {
+  const { entries } = useContext(Bill);
 
-  // abaixo é o mesmo que Boolean(userOut)
-  const isUser = !!userOut;
+  // abaixo é o mesmo que Boolean(entries)
+  const isUser = !!entries;
 
-  const somaDespesas =
-    !isUser || userOut.length === 0
+  const somaReceitas =
+    !isUser || entries.length === 0
       ? 0
-      : userOut
+      : entries
           .map((entry) => Number(entry.valor))
           .reduce((acc, tot) => acc + tot)
           .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
 
   return (
     <div>
-      {!isUser || userOut.length === 0 ? (
+      {!isUser || entries.length === 0 ? (
         <h2>Nada encontrado</h2>
       ) : (
         <div>
@@ -31,24 +31,23 @@ const Controle = () => {
                 <th>Descrição</th>
                 <th>Valor</th>
                 <th>Data</th>
-                <th>Pagamento</th>
               </tr>
             </thead>
-            {userOut.map((despesa, index) => (
-              <CardDespesa despesa={despesa} key={`${index}-despesa`} />
+            {entries.map((receita, index) => (
+              <CardReceita receita={receita} key={`${index}-receita`} />
             ))}
             <tfoot>
               <tr>
                 <td>Total</td>
-                <td>{userOut.length}</td>
-                <td className="text-danger">{somaDespesas}</td>
+                <td>{entries.length}</td>
+                <td className="text-primary">{somaReceitas}</td>
               </tr>
             </tfoot>
           </table>
         </div>
       )}
-      <Link className="btn btn-dark mr-3" to="/despesas">
-        Registrar nova despesa
+      <Link className="btn btn-dark mr-3" to="/receitas">
+        Registrar nova receita
       </Link>
       <Link className="btn btn-dark" to="/main">
         Voltar para home
@@ -57,4 +56,4 @@ const Controle = () => {
   );
 };
 
-export default Controle;
+export default ControleReceitas;

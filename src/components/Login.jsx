@@ -1,11 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Bill from '../context/';
 
 const Login = () => {
   const [userInput, setUserInput] = useState({ name: '', email: '' });
   const history = useHistory();
-  const { handleChangeUser } = useContext(Bill);
 
   const changeInput = (name, event) => {
     setUserInput({ ...userInput, [name]: event });
@@ -14,7 +12,6 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem('userData', JSON.stringify(userInput));
-    handleChangeUser(userInput);
     history.push('/main');
   };
 
@@ -25,12 +22,13 @@ const Login = () => {
       <h3 className="mb-4">Login</h3>
 
       <section className="form-group">
-        <label htmlFor="user">User</label>
+        <label htmlFor="name">User</label>
         <input
+          value={userInput.name}
           onChange={(event) => changeInput('name', event.target.value)}
           className="form-control"
           type="text"
-          id="user"
+          id="name"
           required
         />
       </section>

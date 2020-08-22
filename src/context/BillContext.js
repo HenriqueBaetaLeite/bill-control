@@ -1,35 +1,33 @@
 import React, { useState } from 'react';
 import Bill from './index';
 
-const user = { name: '', email: '' };
-
 const BillContext = ({ children }) => {
-  const [userData, setUserData] = useState(user);
-  const [userEntries, setUserEntries] = useState([]);
-  const [userDespesas, setUserDespesas] = useState([]);
+  const [userOut, setUserOut] = useState([]);
+  const [entries, setEntries] = useState([]);
+  const [userData, setUserData] = useState({});
 
-  const handleChangeUser = (input) => {
-    const { name, email } = input;
-    const inputsLogin = { name, email };
-    setUserData(inputsLogin);
+  const getUserOut = (key) => {
+    const out = JSON.parse(localStorage.getItem(key));
+    setUserOut(out);
   };
 
-  const getUserEntries = (key) => {
-    const local = JSON.parse(localStorage.getItem(key));
-    setUserEntries(local);
+  const getEntries = (key) => {
+    const entry = JSON.parse(localStorage.getItem(key));
+    setEntries(entry);
   };
 
-  const getUserDespesas = (data) => {
-    setUserDespesas([...userDespesas, data]);
+  const getUserData = (key) => {
+    const data = JSON.parse(localStorage.getItem(key));
+    setUserData(data);
   };
 
   const context = {
+    userOut,
+    getUserOut,
     userData,
-    handleChangeUser,
-    userEntries,
-    getUserEntries,
-    userDespesas,
-    getUserDespesas,
+    getUserData,
+    entries,
+    getEntries,
   };
 
   return <Bill.Provider value={context}>{children}</Bill.Provider>;

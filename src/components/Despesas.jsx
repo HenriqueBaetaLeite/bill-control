@@ -2,38 +2,37 @@ import React, { useState, useContext } from 'react';
 import CreateInput from './componentsUtils/CreateInput';
 import { Link, useHistory } from 'react-router-dom';
 import Bill from '../context';
+import { v4 as uuid } from 'uuid';
 
 const Despesas = () => {
+  const { userOut } = useContext(Bill);
+  const [despesa, setDespesa] = useState({ id: uuid() });
   const history = useHistory();
-  const { userDespesas, getUserDespesas } = useContext(Bill);
-  const [despesa, setDespesa] = useState({});
-  const [id, setId] = useState('');
 
   const handleChange = (event) => {
-    setDespesa({ ...despesa, id: Date.now(), [event.target.name]: event.target.value });
+    setDespesa({ ...despesa, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('componente despesa submit', despesa);
-    setId(Date.now());
-    getUserDespesas(despesa);
-    localStorage.setItem('userOut', JSON.stringify([...userDespesas, despesa]));
+    console.log('componente despesa submit, despesa', despesa);
+    localStorage.setItem('userOut', JSON.stringify([...userOut, despesa]));
     history.push('/main');
+    // window.location.reload(true);
   };
-  console.log('componente despesa', despesa);
+
   return (
     <form onSubmit={(e) => handleSubmit(e)} className="container">
       <h2>Faça o registro de suas despesas</h2>
 
       <section className="d-flex flex-column">
         <div>
-          <select onChange={(e) => handleChange(e)} name="tipo" id="tipo">
+          <select onChange={(e) => handleChange(e)} name="tipo" id="tipo" required>
             <option value="">Categoria</option>
             <option value="alimentação">Alimentação</option>
             <option value="transporte">Transporte</option>
             <option value="lazer">Lazer</option>
-            <option value="medicas">Despesas médicas</option>
+            <option value="saúde">Despesas médicas</option>
           </select>
         </div>
         <div>
@@ -44,6 +43,7 @@ const Despesas = () => {
             onChange={(e) => handleChange(e)}
             label="Digite o(s) produto(s)"
             placeholder="...produto(s)"
+            required={true}
           />
         </div>
 
@@ -54,6 +54,7 @@ const Despesas = () => {
           onChange={(e) => handleChange(e)}
           label="Valor da despesa: R$"
           step="0.010"
+          required={true}
         />
 
         <CreateInput

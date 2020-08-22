@@ -1,33 +1,71 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Bill from '../context/';
+import Conversor from './Conversor';
+
+import { TweenMax, Power3 } from 'gsap';
 
 const Main = () => {
-  const { userData, userEntries, getUserEntries } = useContext(Bill);
+  const { userOut, getUserOut, userData, getUserData, getEntries } = useContext(Bill);
 
+  let logoItem = useRef(null);
+  let textItem = useRef(null);
   useEffect(() => {
-    getUserEntries('userOut');
+    getUserOut('userOut');
+    getUserData('userData');
+    getEntries('userEntries');
+
+    TweenMax.to(logoItem, 0.8, {
+      opacity: 1,
+      y: 10,
+      ease: Power3.easeOut,
+      delay: 0.5,
+    });
+    TweenMax.to(textItem, 0.8, {
+      opacity: 1,
+      y: 10,
+      ease: Power3.easeOut,
+      delay: 0.4,
+    });
   }, []);
 
-  console.log('componente main, buscando userEntries do context', userEntries);
-  
+  console.log('componente main, buscando userEntries do context', userOut);
+
   return (
-    <div className="container">
-      <h2>Boas vindas {userData.name}</h2>
-      <p>Este é o seu WebApp de controle financeiro</p>
-      <p>Registre e gerencie suas receitas e despesas</p>
-      {/* INCLUIR COTAÇÃO ATUAL DO DÓLAR E EURO */}
+    <main className="container">
+      <img
+        ref={(el) => (logoItem = el)}
+        src="https://icon-icons.com/icons2/1875/PNG/64/bill_120383.png"
+        alt="imagem qualquer"
+      />
+      <h1 ref={(el) => (textItem = el)}>Boas vindas {userData.name}</h1>
+
+      <h3>Este é o seu App de controle financeiro</h3>
+
+      <h3>Registre e gerencie suas receitas e despesas</h3>
+
       <Link className="btn btn-dark mr-3" to="/controle">
         Minhas contas
       </Link>
+
+      <Link className="btn btn-dark mr-3" to="/controle-receitas">
+        Minhas receitas
+      </Link>
+
+      <Link className="btn btn-dark mr-3" to="/receitas">
+        Registre uma nova receita
+      </Link>
+
       <Link className="btn btn-dark mr-3" to="/despesas">
         Registre uma nova despesa
       </Link>
+
       <Link className="btn btn-dark" to="/bill-control">
         Sair
-        {/* <button onClick={() => localStorage.clear()}>Sair</button> */}
       </Link>
-    </div>
+
+      <Conversor />
+    </main>
   );
 };
 
