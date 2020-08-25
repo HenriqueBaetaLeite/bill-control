@@ -15,7 +15,6 @@ const Despesas = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('componente despesa submit, despesa', despesa);
     localStorage.setItem('userOut', JSON.stringify([...userOut, despesa]));
     history.push('/main');
     // window.location.reload(true);

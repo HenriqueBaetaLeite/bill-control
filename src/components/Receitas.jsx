@@ -13,8 +13,6 @@ const Receitas = () => {
     setReceita({ ...receita, [event.target.name]: event.target.value });
   };
 
-  console.log('componente receita', receita);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.setItem('userEntries', JSON.stringify([...entries, receita]));
@@ -31,6 +29,7 @@ const Receitas = () => {
         onChange={(e) => handleChange(e)}
         label="Digite a(s) receita(s)"
         placeholder="...receita(s)"
+        required={true}
       />
       <CreateInput
         type="number"
@@ -38,6 +37,7 @@ const Receitas = () => {
         id="valor"
         onChange={(e) => handleChange(e)}
         label="Digite o valor"
+        required={true}
       />
       <CreateInput
         type="date"

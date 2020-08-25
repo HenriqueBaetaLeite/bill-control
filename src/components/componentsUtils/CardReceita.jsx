@@ -15,14 +15,12 @@ const CardReceita = ({ receita }) => {
 
   const handleDelete = (id) => {
     const userEntries = JSON.parse(localStorage.getItem('userEntries'));
-    const newUserEntries = userEntries.filter((out) => out.id !== id);
+    const newUserEntries = userEntries.filter((entry) => entry.id !== id);
     localStorage.setItem('userEntries', JSON.stringify(newUserEntries));
     getEntries('userEntries');
   };
 
   const isDateRegistered = !!receita.data;
-
-  const isPagamento = !!receita.pagamento;
 
   return (
     <tbody>

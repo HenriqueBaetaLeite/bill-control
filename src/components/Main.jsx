@@ -6,7 +6,7 @@ import Conversor from './Conversor';
 import { TweenMax, Power3 } from 'gsap';
 
 const Main = () => {
-  const { userOut, getUserOut, userData, getUserData, getEntries } = useContext(Bill);
+  const { userOut, getUserOut, userData, getUserData, entries, getEntries } = useContext(Bill);
 
   let logoItem = useRef(null);
   let textItem = useRef(null);
@@ -29,7 +29,21 @@ const Main = () => {
     });
   }, []);
 
-  console.log('componente main, buscando userEntries do context', userOut);
+  const valorReceitas =
+    entries.length === 0
+      ? 0
+      : entries
+          .map((entry) => Number(entry.valor))
+          .reduce((acc, tot) => acc + tot)
+          .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+
+  const valorDespesas =
+    userOut.length === 0
+      ? 0
+      : userOut
+          .map((out) => Number(out.valor))
+          .reduce((acc, tot) => acc + tot)
+          .toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
 
   return (
     <main className="container">
@@ -44,8 +58,15 @@ const Main = () => {
 
       <h3>Registre e gerencie suas receitas e despesas</h3>
 
-      <Link className="btn btn-dark mr-3" to="/controle">
-        Minhas contas
+      <p>
+        Você possui {userOut.length} registro(s) de despesas e {entries.length} registro(s) de
+        receitas
+      </p>
+      <p>Sua(s) receita(s) tem um total de {valorReceitas}</p>
+      <p>Sua(s) despesa(s) tem um total de {valorDespesas}</p>
+
+      <Link className="btn btn-dark mr-3" to="/controle-despesas">
+        Minhas despesas
       </Link>
 
       <Link className="btn btn-dark mr-3" to="/controle-receitas">
