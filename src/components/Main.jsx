@@ -49,8 +49,9 @@ const Main = () => {
     <main className="container">
       <img
         ref={(el) => (logoItem = el)}
-        src="https://icon-icons.com/icons2/1875/PNG/64/bill_120383.png"
-        alt="imagem qualquer"
+        src="https://www.flaticon.com/svg/static/icons/svg/2922/2922914.svg"
+        width="40px"
+        alt="bill control icon"
       />
       <h1 ref={(el) => (textItem = el)}>Boas vindas {userData.name}</h1>
 
