@@ -46,18 +46,20 @@ const Main = () => {
   };
 
   return (
-    <main className="container">
-      <img
-        ref={(el) => (logoItem = el)}
-        src="https://www.flaticon.com/svg/static/icons/svg/2922/2922914.svg"
-        width="40px"
-        alt="bill control icon"
-      />
-      <h1 ref={(el) => (textItem = el)}>Boas vindas {userData.name}</h1>
+    <main className="card mx-auto text-center">
+      <div className="card-header">
+        <img
+          ref={(el) => (logoItem = el)}
+          src="https://www.flaticon.com/svg/static/icons/svg/2922/2922914.svg"
+          width="40px"
+          alt="bill control icon"
+        />
+        <h1 ref={(el) => (textItem = el)}>Boas vindas {userData.name}</h1>
 
-      <h3>Este é o seu App de controle financeiro</h3>
+        <h3>Este é o seu App de controle financeiro</h3>
 
-      <h3>Registre e gerencie suas receitas e despesas</h3>
+        <h3>Registre e gerencie suas receitas e despesas</h3>
+      </div>
 
       <p>
         Você possui {userOut.length} registro(s) de despesas e {entries.length} registro(s) de
@@ -77,28 +79,45 @@ const Main = () => {
           {saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
         </span>
       </p>
+      <div className="m-3 card w-50 mx-auto">
+        {/* <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button> */}
+        {/* <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav"> */}
+        <Link className="btn btn-dark m-3" to="/controle-despesas">
+          Minhas despesas
+        </Link>
 
-      <Link className="btn btn-dark mr-3" to="/controle-despesas">
-        Minhas despesas
-      </Link>
+        <Link className="btn btn-dark m-3" to="/controle-receitas">
+          Minhas receitas
+        </Link>
 
-      <Link className="btn btn-dark mr-3" to="/controle-receitas">
-        Minhas receitas
-      </Link>
+        <Link className="btn btn-dark m-3" to="/receitas">
+          Registre uma nova receita
+        </Link>
 
-      <Link className="btn btn-dark mr-3" to="/receitas">
-        Registre uma nova receita
-      </Link>
+        <Link className="btn btn-dark m-3" to="/despesas">
+          Registre uma nova despesa
+        </Link>
 
-      <Link className="btn btn-dark mr-3" to="/despesas">
-        Registre uma nova despesa
-      </Link>
-
-      <Link className="btn btn-dark" to="/bill-control">
-        Sair
-      </Link>
-
-      <Conversor />
+        <Link className="btn btn-dark m-3" to="/bill-control">
+          Sair
+        </Link>
+        {/* </div>
+        </div> */}
+      </div>
+      <div className="card-footer">
+        <Conversor />
+      </div>
     </main>
   );
 };
