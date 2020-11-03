@@ -97,7 +97,7 @@ const Main = () => {
           Registre uma nova despesa
         </Link>
 
-        <Link className="btn btn-dark m-3" to="/bill-control">
+        <Link className="btn btn-dark m-3" to="/">
           Sair
         </Link>
       </div>
