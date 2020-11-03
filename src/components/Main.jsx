@@ -60,39 +60,27 @@ const Main = () => {
 
         <h3>Registre e gerencie suas receitas e despesas</h3>
       </div>
-
-      <p>
-        Você possui {userOut.length} registro(s) de despesas e {entries.length} registro(s) de
-        receitas
-      </p>
-      <p>
-        Sua(s) receita(s) tem um total de{' '}
-        {valorReceitas.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
-      </p>
-      <p>
-        Sua(s) despesa(s) tem um total de{' '}
-        {valorDespesas.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
-      </p>
-      <p>
-        Seu balanço é de{' '}
-        <span style={styleValor}>
-          {saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
-        </span>
-      </p>
+      <div className="card-body">
+        <p>
+          Você possui {userOut.length} registro(s) de despesa(s) e {entries.length} registro(s) de
+          receitas
+        </p>
+        <p>
+          Sua(s) receita(s) tem um total de{' '}
+          {valorReceitas.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+        </p>
+        <p>
+          Sua(s) despesa(s) tem um total de{' '}
+          {valorDespesas.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+        </p>
+        <p>
+          Seu balanço é de{' '}
+          <span style={styleValor}>
+            {saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+          </span>
+        </p>
+      </div>
       <div className="m-3 card w-50 mx-auto">
-        {/* <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button> */}
-        {/* <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav"> */}
         <Link className="btn btn-dark m-3" to="/controle-despesas">
           Minhas despesas
         </Link>
@@ -112,8 +100,6 @@ const Main = () => {
         <Link className="btn btn-dark m-3" to="/bill-control">
           Sair
         </Link>
-        {/* </div>
-        </div> */}
       </div>
       <div className="card-footer">
         <Conversor />

@@ -7,6 +7,7 @@ const CreateInput = ({ type, name, id, value, onChange, label, placeholder, step
         {label}
       </label>
       <textarea
+        className="form-control"
         name={name}
         id={id}
         type={type}
@@ -22,6 +23,7 @@ const CreateInput = ({ type, name, id, value, onChange, label, placeholder, step
         {label}
       </label>
       <input
+        className="form-control"
         name={name}
         id={id}
         type={type}
