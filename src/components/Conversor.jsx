@@ -20,12 +20,17 @@ const Conversor = () => {
   };
 
   return (
-    <form className="container d-flex flex-column" onSubmit={(e) => handleSubmit(e)}>
-      <h2>Conversor de moedas</h2>
+    <form className="card mx-auto w-50 m-5" onSubmit={(e) => handleSubmit(e)}>
+      <h2 className="card-title text-center">Conversor de moedas</h2>
 
-      <div>
+      <div className="card-body">
         <label htmlFor="moeda1">Converta</label>
-        <select value={moeda1} id="moeda1" onChange={(e) => setMoeda1(e.target.value)}>
+        <select
+          className="form-control"
+          value={moeda1}
+          id="moeda1"
+          onChange={(e) => setMoeda1(e.target.value)}
+        >
           <option value="">Escolha</option>
           <option value="USD">Dólar - US$</option>
           <option value="EUR">Euro - &#8364;</option>
@@ -34,11 +39,12 @@ const Conversor = () => {
         </select>
       </div>
 
-      <div className="form-group">
+      <div className="card-body">
         <label className="mr-2" htmlFor="inputValue">
           Valor a ser convertido
         </label>
         <input
+          className="form-control"
           value={valor}
           type="number"
           id="inputValue"
@@ -46,9 +52,9 @@ const Conversor = () => {
         />
       </div>
 
-      <div className="form-group">
+      <div className="card-body">
         <label htmlFor="moeda2">Para</label>
-        <select name="" id="" onChange={(e) => setMoeda2(e.target.value)}>
+        <select className="form-control" name="" id="" onChange={(e) => setMoeda2(e.target.value)}>
           <option value="">Escolha</option>
           <option value="USD">Dólar - US$</option>
           <option value="EUR">Euro - &#8364;</option>
@@ -57,21 +63,23 @@ const Conversor = () => {
         </select>
       </div>
 
-      <div>
-        <button className="btn btn-primary mt-4" type="submit">
+      <div className="mx-auto">
+        <button className="btn btn-primary m-3" type="submit">
           Converter
         </button>
       </div>
 
-      <h3>Valor convertido:</h3>
-      <h3>
-        {moeda2
-          ? (valorConvertido * valor).toLocaleString('pt-br', {
-              style: 'currency',
-              currency: `${moeda2}`,
-            })
-          : null}
-      </h3>
+      <div className="card-footer">
+        <h3>Valor convertido:</h3>
+        <h3>
+          {moeda2
+            ? (valorConvertido * valor).toLocaleString('pt-br', {
+                style: 'currency',
+                currency: `${moeda2}`,
+              })
+            : null}
+        </h3>
+      </div>
     </form>
   );
 };

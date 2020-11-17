@@ -21,12 +21,18 @@ const Despesas = () => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)} className="container">
+    <form onSubmit={(e) => handleSubmit(e)} className="card w-75 mx-auto">
       <h2>Faça o registro de suas despesas</h2>
 
-      <section className="d-flex flex-column">
+      <section className="card m-2">
         <div>
-          <select onChange={(e) => handleChange(e)} name="tipo" id="tipo" required>
+          <select
+            className="form-control"
+            onChange={(e) => handleChange(e)}
+            name="tipo"
+            id="tipo"
+            required
+          >
             <option value="">Categoria</option>
             <option value="alimentação">Alimentação</option>
             <option value="transporte">Transporte</option>
@@ -97,13 +103,15 @@ const Despesas = () => {
         />
       </section>
 
-      <button className="btn btn-dark mr-3" type="submit">
-        Adicionar registro
-      </button>
+      <div className="card-footer mx-auto">
+        <button className="btn btn-dark mr-3" type="submit">
+          Adicionar registro
+        </button>
 
-      <Link className="btn btn-dark" to="/main">
-        Voltar para home
-      </Link>
+        <Link className="btn btn-dark" to="/main">
+          Voltar para home
+        </Link>
+      </div>
     </form>
   );
 };

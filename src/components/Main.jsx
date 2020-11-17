@@ -46,58 +46,64 @@ const Main = () => {
   };
 
   return (
-    <main className="container">
-      <img
-        ref={(el) => (logoItem = el)}
-        src="https://icon-icons.com/icons2/1875/PNG/64/bill_120383.png"
-        alt="imagem qualquer"
-      />
-      <h1 ref={(el) => (textItem = el)}>Boas vindas {userData.name}</h1>
+    <main className="card mx-auto text-center">
+      <div className="card-header">
+        <img
+          ref={(el) => (logoItem = el)}
+          src="https://www.flaticon.com/svg/static/icons/svg/2922/2922914.svg"
+          width="40px"
+          alt="bill control icon"
+        />
+        <h1 ref={(el) => (textItem = el)}>Boas vindas {userData.name}</h1>
 
-      <h3>Este é o seu App de controle financeiro</h3>
+        <h3>Este é o seu App de controle financeiro</h3>
 
-      <h3>Registre e gerencie suas receitas e despesas</h3>
+        <h3>Registre e gerencie suas receitas e despesas</h3>
+      </div>
+      <div className="card-body">
+        <p>
+          Você possui {userOut.length} registro(s) de despesa(s) e {entries.length} registro(s) de
+          receitas
+        </p>
+        <p>
+          Sua(s) receita(s) tem um total de{' '}
+          {valorReceitas.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+        </p>
+        <p>
+          Sua(s) despesa(s) tem um total de{' '}
+          {valorDespesas.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+        </p>
+        <p>
+          Seu balanço é de{' '}
+          <span style={styleValor}>
+            {saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
+          </span>
+        </p>
+      </div>
+      <div className="m-3 card w-50 mx-auto">
+        <Link className="btn btn-dark m-3" to="/controle-despesas">
+          Minhas despesas
+        </Link>
 
-      <p>
-        Você possui {userOut.length} registro(s) de despesas e {entries.length} registro(s) de
-        receitas
-      </p>
-      <p>
-        Sua(s) receita(s) tem um total de{' '}
-        {valorReceitas.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
-      </p>
-      <p>
-        Sua(s) despesa(s) tem um total de{' '}
-        {valorDespesas.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
-      </p>
-      <p>
-        Seu balanço é de{' '}
-        <span style={styleValor}>
-          {saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}
-        </span>
-      </p>
+        <Link className="btn btn-dark m-3" to="/controle-receitas">
+          Minhas receitas
+        </Link>
 
-      <Link className="btn btn-dark mr-3" to="/controle-despesas">
-        Minhas despesas
-      </Link>
+        <Link className="btn btn-dark m-3" to="/receitas">
+          Registre uma nova receita
+        </Link>
 
-      <Link className="btn btn-dark mr-3" to="/controle-receitas">
-        Minhas receitas
-      </Link>
+        <Link className="btn btn-dark m-3" to="/despesas">
+          Registre uma nova despesa
+        </Link>
 
-      <Link className="btn btn-dark mr-3" to="/receitas">
-        Registre uma nova receita
-      </Link>
-
-      <Link className="btn btn-dark mr-3" to="/despesas">
-        Registre uma nova despesa
-      </Link>
-
-      <Link className="btn btn-dark" to="/bill-control">
-        Sair
-      </Link>
-
-      <Conversor />
+        <Link className="btn btn-dark m-3" to="/">
+          Sair
+        </Link>
+      </div>
+      <div className="card-footer">
+        <Conversor />
+      </div>
     </main>
   );
 };

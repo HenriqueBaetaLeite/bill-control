@@ -5,7 +5,7 @@ const NotFound = () => {
   return (
     <div>
       <h2>Página não encontrada</h2>
-      <Link to="/bill-control">Faça Login</Link>
+      <Link to="/">Faça Login</Link>
     </div>
   );
 };
